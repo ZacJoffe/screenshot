@@ -1,3 +1,5 @@
+github.com/ZacJoffe/clipboard v0.0.0-20190414232103-e1d59897bf29 h1:FYI7oeoh14IlEJxN+zC6VtU75UDA+oqM/2/xiS1Sgls=
+github.com/ZacJoffe/clipboard v0.0.0-20190414232103-e1d59897bf29/go.mod h1:xcfkWpLs2j7ZNabuXDJ/+VsoCxNxWL/WRssfVxJkTwc=
 github.com/ZacJoffe/screenshot-lib v0.0.0-20190414212402-a6fbd2bcb67c h1:Yg6yV9QAwc/0eaAZhLU4ipcvK7XI6r8zh0Fdf86WJ5M=
 github.com/ZacJoffe/screenshot-lib v0.0.0-20190414212402-a6fbd2bcb67c/go.mod h1:zL+TrA1K5eW2Nto1Ca/7/G8IZMKOXD5LdlfKv50RF0g=
 github.com/spf13/cobra v0.0.3 h1:ZlrZ4XsMRm04Fr5pSFxBgfND2EBVa1nLpiy1stUsX/8=

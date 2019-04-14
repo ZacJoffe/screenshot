@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/ZacJoffe/clipboard/xclip"
 	"github.com/ZacJoffe/screenshot-lib/screenshot"
 	"github.com/spf13/cobra"
 )
@@ -19,10 +20,21 @@ var rootCmd = &cobra.Command{
 		}
 
 		if sel {
-			_, err = screenshot.Select()
+			image, err := screenshot.Select()
+			if err != nil {
+				return err
+			}
+
+			err = xclip.WriteImage(image)
 			return err
 		}
-		_, err = screenshot.Screen()
+
+		image, err := screenshot.Screen()
+		if err != nil {
+			return err
+		}
+
+		err = xclip.WriteImage(image)
 		return err
 	},
 }

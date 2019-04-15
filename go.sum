@@ -2,6 +2,8 @@ github.com/ZacJoffe/clipboard v0.0.0-20190414232103-e1d59897bf29 h1:FYI7oeoh14Il
 github.com/ZacJoffe/clipboard v0.0.0-20190414232103-e1d59897bf29/go.mod h1:xcfkWpLs2j7ZNabuXDJ/+VsoCxNxWL/WRssfVxJkTwc=
 github.com/ZacJoffe/screenshot-lib v0.0.0-20190414212402-a6fbd2bcb67c h1:Yg6yV9QAwc/0eaAZhLU4ipcvK7XI6r8zh0Fdf86WJ5M=
 github.com/ZacJoffe/screenshot-lib v0.0.0-20190414212402-a6fbd2bcb67c/go.mod h1:zL+TrA1K5eW2Nto1Ca/7/G8IZMKOXD5LdlfKv50RF0g=
+github.com/ZacJoffe/uploader-libs v0.0.0-20190413011835-570e3a62c77c h1:9NfmnGWBiLFIOfSZy1YwufMhFodKoD3i33NNj9h6kwE=
+github.com/ZacJoffe/uploader-libs v0.0.0-20190413011835-570e3a62c77c/go.mod h1:h+8GftuF4dxWEMHIh0CiS5DWyisXQu2Qq/bV2WmkIaA=
 github.com/spf13/cobra v0.0.3 h1:ZlrZ4XsMRm04Fr5pSFxBgfND2EBVa1nLpiy1stUsX/8=
 github.com/spf13/cobra v0.0.3/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=
 github.com/spf13/pflag v1.0.3 h1:zPAT6CGy6wXeQ7NtTnaTerfKOsV6V6F8agHXFiazDkg=

@@ -19,23 +19,63 @@ var rootCmd = &cobra.Command{
 			return err
 		}
 
+		var image *os.File
+
 		if sel {
-			image, err := screenshot.Select()
+			image, err = screenshot.Select()
 			if err != nil {
 				return err
 			}
 
+			defer image.Close()
+			/*
+				err = xclip.WriteImage(image)
+				if err != nil {
+					return err
+				}
+			*/
+		} else {
+			image, err = screenshot.Screen()
+			if err != nil {
+				return err
+			}
+
+			defer image.Close()
+
+			/*
+				err = xclip.WriteImage(image)
+				if err != nil {
+					return err
+				}
+			*/
+		}
+
+		upload, err := cmd.Flags().GetBool("upload")
+
+		if upload {
+			photo, err := os.Open("/tmp/screenshot.png")
+			if err != nil {
+				return err
+			}
+
+			link, err := uploadImage(photo)
+			if err != nil {
+				return err
+			}
+
+			fmt.Println(link)
+			err = xclip.WriteText(link)
+			if err != nil {
+				return err
+			}
+		} else {
 			err = xclip.WriteImage(image)
-			return err
+			if err != nil {
+				return err
+			}
 		}
 
-		image, err := screenshot.Screen()
-		if err != nil {
-			return err
-		}
-
-		err = xclip.WriteImage(image)
-		return err
+		return nil
 	},
 }
 
@@ -48,4 +88,5 @@ func Execute() {
 
 func init() {
 	rootCmd.Flags().BoolP("select", "s", false, "Select region of the screen to screenshot")
+	rootCmd.Flags().BoolP("upload", "u", false, "Upload screenshot to imgur")
 }

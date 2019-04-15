@@ -12,7 +12,8 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "screenshot",
 	Short: "Screenshot CLI app",
-	Long:  ``,
+	//Long:         ``,
+	SilenceUsage: true,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		sel, err := cmd.Flags().GetBool("select")
 		if err != nil {
@@ -28,12 +29,6 @@ var rootCmd = &cobra.Command{
 			}
 
 			defer image.Close()
-			/*
-				err = xclip.WriteImage(image)
-				if err != nil {
-					return err
-				}
-			*/
 		} else {
 			image, err = screenshot.Screen()
 			if err != nil {
@@ -41,13 +36,6 @@ var rootCmd = &cobra.Command{
 			}
 
 			defer image.Close()
-
-			/*
-				err = xclip.WriteImage(image)
-				if err != nil {
-					return err
-				}
-			*/
 		}
 
 		upload, err := cmd.Flags().GetBool("upload")

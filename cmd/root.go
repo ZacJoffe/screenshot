@@ -5,7 +5,8 @@ import (
 	"os"
 
 	"github.com/ZacJoffe/clipboard/xclip"
-	"github.com/ZacJoffe/screenshot-lib/screenshot"
+	im "github.com/ZacJoffe/screenshot-lib/imagemagick"
+	"github.com/ZacJoffe/screenshot-lib/maim"
 	"github.com/spf13/cobra"
 )
 
@@ -15,6 +16,11 @@ var rootCmd = &cobra.Command{
 	//Long:         ``,
 	SilenceUsage: true,
 	RunE: func(cmd *cobra.Command, args []string) error {
+		imageMagick, err := cmd.Flags().GetBool("imagemagick")
+		if err != nil {
+			return err
+		}
+
 		sel, err := cmd.Flags().GetBool("select")
 		if err != nil {
 			return err
@@ -22,20 +28,38 @@ var rootCmd = &cobra.Command{
 
 		var image *os.File
 
-		if sel {
-			image, err = screenshot.Select()
-			if err != nil {
-				return err
-			}
+		if imageMagick {
+			if sel {
+				image, err = im.Select()
+				if err != nil {
+					return err
+				}
 
-			defer image.Close()
+				defer image.Close()
+			} else {
+				image, err = im.Screen()
+				if err != nil {
+					return err
+				}
+
+				defer image.Close()
+			}
 		} else {
-			image, err = screenshot.Screen()
-			if err != nil {
-				return err
-			}
+			if sel {
+				image, err = screenshot.Select()
+				if err != nil {
+					return err
+				}
 
-			defer image.Close()
+				defer image.Close()
+			} else {
+				image, err = screenshot.Screen()
+				if err != nil {
+					return err
+				}
+
+				defer image.Close()
+			}
 		}
 
 		upload, err := cmd.Flags().GetBool("upload")
@@ -77,4 +101,5 @@ func Execute() {
 func init() {
 	rootCmd.Flags().BoolP("select", "s", false, "Select region of the screen to screenshot")
 	rootCmd.Flags().BoolP("upload", "u", false, "Upload screenshot to imgur")
+	rootCmd.Flags().BoolP("imagemagick", "i", false, "Use ImageMagick screenshot backend")
 }
